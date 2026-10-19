@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="5FfKcn8rarYGhyilWL6Shs">
+<head data-page-node-id="UhHdAFqaM2q08iuZhPoVdz">
+  <meta charset="UTF-8" data-page-node-id="tGgFp5GG9nwEaAU97uzqtN">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="pHavreCyGulhNRgXILyJOa">
+  <title>登录 - 智慧校园管理系统</title>
+  <link rel="stylesheet" href="css/style.css" data-page-node-id="zGHuADuATF6u2FVPLgSACo">
+</head>
+<body data-page-node-id="s9E1PZyEWwlqEMhKFmAWWx">
+  <main class="auth-card" data-page-node-id="2HqdopS1oGjy7cktu6Ejoz">
+    <div class="brand" data-page-node-id="IZp5dHlbdorCx1wvzY2I0P">
+      <div class="brand-logo" data-page-node-id="95FKY3S46aTmVw7hekBNYH">SC</div>
+      <h1 class="brand-title" data-page-node-id="6VpO3nW0BixwbZrLHr3GrV">智慧校园管理系统</h1>
+      <p class="brand-sub" data-page-node-id="5GIBnyMbDRvT2S1QvTDhTU">欢迎回来，请登录您的账户</p>
+    </div>
+
+    <!-- novalidate 关闭浏览器原生校验，使用自定义 JS 校验 -->
+    <form id="loginForm" class="auth-form" novalidate data-page-node-id="oafSUOWa4R31tAZMwJkixC">
+      <div class="form-group" data-page-node-id="AKf1mwHaPBDz21rJqs22M3">
+        <label for="username" data-page-node-id="rCTzPV0oL3nayFeY9aTcKe">用户名</label>
+        <input type="text" id="username" name="username"
+               placeholder="请输入用户名（3-20 位）" autocomplete="username" data-page-node-id="lUf7wGEaubEAqBpCqTWBYx">
+        <span class="error-msg" data-for="username" data-page-node-id="E16Rw1cRxVllysMhWuETHg"></span>
+      </div>
+
+      <div class="form-group" data-page-node-id="J0CqdUnc8YOj0rzG0cwGWT">
+        <label for="password" data-page-node-id="HtxwocFpjyKOdSUVk2Ex8o">密码</label>
+        <div class="input-wrap" data-page-node-id="MjB610wohv4zDai8JwUEfg">
+          <input type="password" id="password" name="password"
+                 placeholder="请输入密码（6-20 位）" autocomplete="current-password" data-page-node-id="g3MXfOEKJdYX9DzY1EgMCN">
+          <button type="button" class="toggle-pwd" data-target="password" aria-label="显示密码" data-page-node-id="Ess97rgVIeOmR9MCdTklXK">👁</button>
+        </div>
+        <span class="error-msg" data-for="password" data-page-node-id="YmQbYxxbxC3Mm3VhvbGeon"></span>
+      </div>
+
+      <div class="form-extra" data-page-node-id="7zryCtkEI67XUgo8gAX0He">
+        <label class="remember" data-page-node-id="7GusgwbXxeoLaukG0H3RKp"><input type="checkbox" id="remember" name="remember" data-page-node-id="JefMungUvOZ1fFoyWa9ypq"> 记住我（7 天免登录）</label>
+        <a href="#" class="link" data-page-node-id="6BEal63s2rzRIVRMIgdQtz">忘记密码？</a>
+      </div>
+
+      <button type="submit" class="btn-primary" data-page-node-id="5YGCRzZkLPh5Ksgxv7MNbC">登录</button>
+
+      <p class="form-foot" data-page-node-id="k2wnkfbRAMKZ5sWCnWbuiK">还没有账户？<a href="register.html" class="link" data-page-node-id="TLSVXDBH3J5o1q8f7IDUpK">立即注册</a></p>
+    </form>
+  </main>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

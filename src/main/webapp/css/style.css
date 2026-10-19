@@ -1,0 +1,291 @@
+/* ============================================================
+   智慧校园管理系统 - 登录/注册页 共享样式
+   说明：纯静态资源，可直接由 Tomcat 托管（放在 webapps 下）
+   ============================================================ */
+
+/* ---------- 基础重置 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #4f6ef7;
+  --primary-dark: #3a55d9;
+  --bg-start: #6a8dff;
+  --bg-end: #9b6bff;
+  --text: #2b2f3a;
+  --muted: #8a90a2;
+  --error: #e5484d;
+  --success: #2fa66b;
+  --border: #e3e6ef;
+  --card-bg: #ffffff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
+    "PingFang SC", sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+/* ---------- 登录卡片 ---------- */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(40, 40, 90, 0.25);
+  padding: 40px 36px;
+  animation: fadeUp 0.5s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- 品牌区 ---------- */
+.brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.brand-logo {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), #8a6bff);
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(79, 110, 247, 0.4);
+}
+
+.brand-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.brand-sub {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- 表单 ---------- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #41465a;
+}
+
+.optional {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* 输入框 */
+.form-group input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  font-size: 15px;
+  color: var(--text);
+  background: #f7f8fc;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.form-group input::placeholder {
+  color: #b3b8c7;
+}
+
+.form-group input:focus {
+  background: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.15);
+}
+
+.form-group input.valid {
+  border-color: var(--success);
+}
+
+.form-group input.invalid {
+  border-color: var(--error);
+  background: #fff5f5;
+}
+
+/* 密码框带切换按钮 */
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap input {
+  padding-right: 46px;
+}
+
+.toggle-pwd {
+  position: absolute;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 17px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.toggle-pwd:hover {
+  opacity: 1;
+}
+
+/* 错误提示 */
+.error-msg {
+  min-height: 16px;
+  font-size: 12.5px;
+  color: var(--error);
+}
+
+/* ---------- 表单附加行（记住我 / 忘记密码） ---------- */
+.form-extra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #41465a;
+  cursor: pointer;
+}
+
+.remember input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--primary);
+}
+
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 主按钮 ---------- */
+.btn-primary {
+  height: 48px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), #7a5cff);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 10px 24px rgba(79, 110, 247, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(79, 110, 247, 0.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- 底部提示 ---------- */
+.form-foot {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+/* ---------- 响应式：小屏适配 ---------- */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 30px 22px;
+    border-radius: 14px;
+  }
+
+  .brand-title {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    height: 44px;
+  }
+
+  .btn-primary {
+    height: 46px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 12px;
+  }
+
+  .auth-card {
+    padding: 24px 18px;
+  }
+}

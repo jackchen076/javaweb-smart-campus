@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页 - 智慧校园管理系统</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .home-wrap { width: 100%; max-width: 720px; }
+    .home-head {
+      display: flex; align-items: center; gap: 14px;
+      background: #fff; border-radius: 16px; padding: 20px 24px;
+      box-shadow: 0 18px 40px rgba(31, 38, 90, 0.12); margin-bottom: 18px;
+    }
+    .avatar {
+      width: 52px; height: 52px; border-radius: 50%; flex: 0 0 52px;
+      background: linear-gradient(135deg, #4f6ef7, #7a5cff); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 700;
+    }
+    .home-head h2 { margin: 0 0 4px; font-size: 19px; color: #1f265a; }
+    .home-head p { margin: 0; font-size: 13px; color: #6b7290; }
+    .home-head .logout { margin-left: auto; }
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .mini-card {
+      background: #fff; border-radius: 14px; padding: 18px 16px;
+      box-shadow: 0 12px 28px rgba(31, 38, 90, 0.08); text-align: center;
+    }
+    .mini-card .ico { font-size: 26px; }
+    .mini-card h3 { margin: 10px 0 4px; font-size: 15px; color: #1f265a; }
+    .mini-card p { margin: 0; font-size: 12.5px; color: #8a90a8; line-height: 1.5; }
+    .welcome-tip {
+      margin-top: 18px; background: #eef1ff; border-radius: 12px;
+      padding: 14px 18px; font-size: 13px; color: #4b5271; line-height: 1.7;
+    }
+    @media (max-width: 560px) { .card-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="home-wrap">
+    <div class="home-head">
+      <div class="avatar" id="avatar">SC</div>
+      <div>
+        <h2 id="hello">欢迎回来</h2>
+        <p id="sub">智慧校园管理系统 · 已通过 Servlet 登录验证</p>
+      </div>
+      <a class="link logout" href="logout">退出登录</a>
+    </div>
+
+    <div class="card-grid">
+      <div class="mini-card"><div class="ico">📚</div><h3>我的课程</h3><p>查看本学期课程表与进度</p></div>
+      <div class="mini-card"><div class="ico">📊</div><h3>成绩查询</h3><p>查看各科成绩与绩点</p></div>
+      <div class="mini-card"><div class="ico">📢</div><h3>校园通知</h3><p>最新公告与活动提醒</p></div>
+    </div>
+
+    <div class="welcome-tip">
+      本页用于验证登录 Servlet 是否生效：能看到上面的用户名，说明 <b>Session 已正常写入</b>。
+      点击「退出登录」会请求 <code>LogoutServlet</code> 销毁 Session 并跳回登录页。
+    </div>
+  </main>
+
+  <script>
+    /* 从 Session 接口读取当前登录用户名（若未登录则跳回登录页） */
+    fetch("current-user", { credentials: "same-origin" })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data || !data.loggedIn) {
+          window.location.href = "login.html";
+          return;
+        }
+        var name = data.username;
+        document.getElementById("hello").textContent = "欢迎回来，" + name + "！";
+        document.getElementById("avatar").textContent = name.slice(0, 2).toUpperCase();
+      })
+      .catch(function () {
+        /* 接口异常时不阻塞展示 */
+      });
+  </script>
+</body>
+</html>
