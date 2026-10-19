@@ -102,13 +102,42 @@ smart-campus/
 1. IDEA 打开 `smart-campus` 文件夹（自动识别 Maven 工程）
 2. `File → Project Structure` → Project SDK 选 JDK 21
 3. `Run → Edit Configurations → + → Tomcat Server → Local`
-   - Application server：`C:\Users\chp\WorkBuddy\apache-tomcat`
+   - Application server：选择本机 Tomcat 9 安装目录（如 `C:\apache-tomcat-9.0.121`）
 4. `Deployment → + → Artifact → smart-campus:war exploded`，Application context 填 `/smart-campus`
 5. 执行 `sql/schema.sql` 建库建表
 6. 修改 `src/main/java/com/smartcampus/util/DBUtil.java` 里的数据库密码
 7. 点 ▶ Run
 
-### 方式二：手动部署
+### 方式二：Maven 命令行
+
+```bash
+# 1. 首次运行需先建库建表
+mysql -uroot -p < sql/schema.sql
+
+# 2. 打包（跳过测试），约 10–15 秒
+mvn clean package -DskipTests
+```
+
+构建产物：
+
+| 产物 | 用途 |
+|------|------|
+| `target/smart-campus.war` | 整包部署，复制到 `%CATALINA_HOME%\webapps\` 后启动 Tomcat 即自动解压 |
+| `target/smart-campus/` | 已展开的 webapp 目录，可被 Tomcat 直接加载 |
+
+开发期若不想每次手工复制，可在 Windows 上用目录联接让 Tomcat 直接指向构建输出：
+
+```bat
+mklink /J "C:\path\to\tomcat\webapps\smart-campus" "C:\path\to\smart-campus\target\smart-campus"
+```
+
+之后每次 `mvn package` 完成，刷新浏览器即可看到改动。
+
+> 若 `mvn` 不在 PATH 中，可直接使用 IDE 内置的 Maven，例如 IDEA：
+> `"<IDEA 安装目录>\plugins\maven\lib\maven3\bin\mvn"`
+
+### 方式三：手动部署（不使用 Maven）
+
 ```bash
 # 1. 建库建表
 mysql -uroot -p < sql/schema.sql
